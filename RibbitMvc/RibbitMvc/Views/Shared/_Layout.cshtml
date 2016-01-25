@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet/less" href="/style.less">
+    <script src="/less.js"></script>
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <img src="/gfx/logo.png">
+            <span>Twitter Clone</span>
+
+            @if (Security.IsAuthenticated)
+            {
+                <nav>
+                    @Html.RouteLink("Followers", "Followers")
+                    @Html.RouteLink("Following", "Following")
+                    @Html.RouteLink("Profiles", "Profiles")
+                    @Html.RouteLink("Edit Profile", "ProfileDefault")
+                </nav>
+                
+                using (var logoutForm = Html.BeginForm("Logout", "Account"))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Log Out" />
+                }
+            }
+            else {
+                var model = (Model as LoginSignupViewModel) ?? new LoginSignupViewModel();
+                
+                @Html.Partial("_LoginPartial", model);   
+            }
+        </div>
+    </header>
+    <div id="content">
+        <div class="wrapper">
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="flash error">
+                    @Html.ValidationSummary()
+                </div>
+            }
+
+            @if (IsSectionDefined("RightPanel"))
+            {
+                <div class="panel right">
+                    @RenderSection("RightPanel")
+                </div>
+            }
+
+            @RenderBody()
+
+            
+
+            @if (IsSectionDefined("LeftPanel"))
+            {
+                <div class="panel left">
+                    @RenderSection("LeftPanel")
+                </div>
+            }
+        </div>
+    </div>
+    <footer>
+        <div class="wrapper">
+            Ribbit - A Twitter Clone Tutorial<img src="/gfx/logo-nettuts.png">
+        </div>
+    </footer>
+</body>
+</html>

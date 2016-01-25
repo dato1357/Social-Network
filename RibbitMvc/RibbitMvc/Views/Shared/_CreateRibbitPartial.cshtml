@@ -1,0 +1,20 @@
+﻿@model CreateRibbitViewModel
+
+<h1>Create a Ribbit</h1>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="flash error">
+        @Html.ValidationMessageFor(m => m.Status)
+    </div>
+}
+
+<p>
+    @using (var frm = Html.BeginForm("index", "home"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.TextAreaFor(m => m.Status, new { @class = "ribbitText"})
+        <input type="submit" value="Ribbit!" />
+    }
+
+</p>

@@ -1,0 +1,18 @@
+﻿@model User
+
+<div id="ribbits" class="panel left">
+    <h1>Ribbit Profile</h1>
+    <div class="ribbitWrapper">
+        <img class="avatar" src="http://www.gravatar.com/avatar/@Model.Profile.GetEmailHash()">
+        <span class="name">
+            @Html.RouteLink(Model.Profile.Name, "UserDefault", new { controller = "user", username = Model.Username, action = "index" })
+        </span>@@@Model.Username
+        <p>
+            @Model.Ribbits.Count @Html.ActionLink("Ribbits", "index", new { controller = "user", username = Model.Username})<span class="spacing">@Model.Followers.Count @Html.ActionLink("Followers", "followers")</span><span class="spacing">@Model.Followings.Count @Html.ActionLink("Following", "following")</span><br>
+            @Model.Profile.Bio
+        </p>
+
+    @Html.Partial("_FollowButtonPartial", Model)
+
+    </div>
+</div>

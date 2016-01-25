@@ -1,0 +1,47 @@
+﻿@model EditProfileViewModel
+
+@{
+    ViewBag.Title = "Edit Profile";
+}
+
+@section LeftPanel {
+    @using (var frm = Html.BeginForm("Edit", "Profile")) {
+     @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(m => m.Id);
+        
+        <div>
+            @Html.LabelFor(m => m.Email)
+        </div>   
+        <div>
+            @Html.EditorFor(m => m.Email)
+        </div>
+        
+        <div>
+            @Html.LabelFor(m => m.Name)
+        </div>   
+        <div>
+            @Html.EditorFor(m => m.Name)
+        </div>
+        
+        <div>
+            @Html.LabelFor(m => m.Website)
+        </div>
+        <div>
+            @Html.EditorFor(m => m.Website)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Bio)
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.Bio, new { @class = "ribbitText"})
+        </div>
+
+        <div>
+            <input type="submit" value="Save" />
+        </div>
+    }
+
+
+
+}

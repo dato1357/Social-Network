@@ -1,0 +1,14 @@
+﻿@model RibbitMvc.Models.User
+
+<div class="ribbitWrapper">
+    <img class="avatar" src="http://www.gravatar.com/avatar/@Model.Profile.GetEmailHash()">
+    <span class="name">
+        @Html.RouteLink(Model.Profile.Name, "UserDefault", new { controller = "user", username = Model.Username, action = "index" })
+    </span>@@@Model.Username
+
+    @Html.Partial("_FollowButtonPartial", Model)
+
+    <p>
+        @Model.Profile.Bio
+    </p>
+</div>

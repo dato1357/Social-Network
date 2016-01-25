@@ -1,0 +1,24 @@
+﻿@model LoginSignupViewModel
+
+@{
+    ViewBag.Title = "Ribbit";
+}
+
+<img src="/gfx/frog.jpg">
+
+@section RightPanel {
+    <h1>New to Ribbit?</h1>
+    <p>
+        @using (var signupForm = Html.BeginForm("SignUp", "Account")) {
+            @Html.AntiForgeryToken()
+            @Html.TextBoxFor(m => m.Signup.Email, new { placeholder = "Email" })
+            @Html.TextBoxFor(m => m.Signup.Username, new { placeholder = "Username"})
+            @Html.PasswordFor(m => m.Signup.Password, new { placeholder = "Password" })
+            @Html.PasswordFor(m => m.Signup.Password2, new { placeholder = "Confirm Password" })
+
+            <input type="submit" value="Create Account">
+
+  
+        }
+    </p>
+}

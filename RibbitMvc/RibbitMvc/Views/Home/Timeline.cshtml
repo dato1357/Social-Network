@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Ribbit>
+
+@{
+    ViewBag.Title = "Timeline";
+}
+
+@section RightPanel {
+    @{ Html.RenderAction("Create");
+    }
+    }
+
+@section LeftPanel {
+    @if (Model.Any())
+    {
+        foreach (var ribbit in Model)
+        {
+        @Html.Partial("_RibbitPartial", ribbit);
+        }
+    }
+    else
+    {
+        <p>Quick! Post a Ribbit!</p>   
+    }
+
+}

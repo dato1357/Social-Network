@@ -1,0 +1,9 @@
+﻿@model RibbitMvc.Models.Ribbit
+
+<div class="ribbitWrapper">
+	<img class="avatar" src="http://www.gravatar.com/avatar/@Model.Author.Profile.GetEmailHash()">
+	<span class="name">@Model.Author.Profile.Name</span> @@@Model.Author.Username <span class="time">@Model.FriendlyTimestamp()</span>
+	<p>
+        @Model.Status
+	</p>
+</div>

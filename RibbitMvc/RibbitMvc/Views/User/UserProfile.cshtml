@@ -1,0 +1,21 @@
+﻿@model UserViewModel
+
+@{
+    ViewBag.Title = "UserProfile";
+}
+
+@section RightPanel {
+    @{ 
+        Html.RenderAction("Create", "Home");
+    }
+}
+
+@Html.Partial("_UserPartial", Model.User)
+
+<div class="panel left">
+    <h1>Ribbits</h1>
+    @foreach (var ribbit in Model.Ribbits)
+    {
+        @Html.Partial("_RibbitPartial", ribbit)
+    }
+</div>

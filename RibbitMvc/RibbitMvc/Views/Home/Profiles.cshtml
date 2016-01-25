@@ -1,0 +1,11 @@
+﻿@model IEnumerable<User>
+
+@{
+    ViewBag.Title = "Profiles";
+}
+
+@section LeftPanel {
+    @foreach (var user in Model) {
+     @Html.Partial("_UserProfilePartial", user);   
+    }
+}

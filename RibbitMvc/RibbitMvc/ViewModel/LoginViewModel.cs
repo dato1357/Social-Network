@@ -12,6 +12,8 @@ namespace RibbitMvc.ViewModel
         public string Username { get; set; }
 
         [Required(ErrorMessage = "Please enter your password.")]
+        [DataType(DataType.Password)]
+        [StringLength(MinLength=6)]
         public string Password { get; set; }
     }
 }

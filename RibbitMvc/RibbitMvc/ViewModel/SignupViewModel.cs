@@ -9,6 +9,7 @@ namespace RibbitMvc.ViewModel
     public class SignupViewModel
     {
         [Required(ErrorMessage = "Please enter your desired username")]
+        [StringLength(MinLength = 3)]
         public string Username { get; set; }
         
         [Required(ErrorMessage = "Please enter a password.")]
